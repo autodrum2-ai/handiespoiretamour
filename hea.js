@@ -95,7 +95,7 @@ document.querySelectorAll('.copier').forEach(b => b.addEventListener('click', as
 }));
 
 // Visionneuse de galerie
-document.querySelectorAll('.galerie img, .mini-galerie img').forEach(img => img.addEventListener('click', () => {
+document.querySelectorAll('.galerie img, .mini-galerie img, .album img').forEach(img => img.addEventListener('click', () => {
   const v = document.createElement('div');
   v.className = 'visionneuse';
   v.setAttribute('role', 'dialog');
@@ -252,3 +252,4 @@ if (film && !sansAnimation) {
   verifierFilm();
   boutonSon.addEventListener('click', () => { film.muted = false; boutonSon.hidden = true; film.play(); });
 }
+
