@@ -1007,3 +1007,10 @@ body, button, input { font-family: var(--police-texte); }
 .album img { width: 100%; height: auto; border-radius: 16px; cursor: zoom-in; transition: transform .3s ease; }
 .album img:hover { transform: scale(1.02); }
 .album figcaption { margin-top: .5rem; font-size: .92rem; color: var(--bleu-fonce, #1f4f6b); }
+
+/* Bouton WhatsApp flottant, sur toutes les pages */
+.whatsapp-flottant { position: fixed; right: 18px; bottom: 18px; z-index: 400; display: inline-flex; align-items: center; gap: .5em; padding: .75em 1.15em .75em .9em; border-radius: 999px; background: #25d366; color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 10px 26px rgba(0, 0, 0, .22); transition: transform .2s, box-shadow .2s; }
+.whatsapp-flottant svg { width: 28px; height: 28px; flex: none; }
+.whatsapp-flottant:hover, .whatsapp-flottant:focus-visible { color: #fff; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0, 0, 0, .28); }
+@media (max-width: 560px) { .whatsapp-flottant { padding: .8em; } .whatsapp-flottant span { display: none; } }
+@media print { .whatsapp-flottant { display: none; } }
