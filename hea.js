@@ -220,8 +220,14 @@ if (film && !sansAnimation) {
   film.addEventListener('pause', () => { if (pauseParScript) pauseParScript = false; else pauseVisiteur = true; });
   film.addEventListener('play', () => { pauseVisiteur = false; });
   film.addEventListener('volumechange', () => { if (!film.muted) boutonSon.hidden = true; });
+  // Connexion lente ou mode économie de données : pas de lecture automatique,
+  // sinon la vidéo (10 Mo) prend toute la bande passante aux photos.
+  const reseau = navigator.connection || {};
+  const connexionLente = reseau.saveData || /2g/.test(reseau.effectiveType || '');
+  let pageChargee = document.readyState === 'complete';
+  addEventListener('load', () => { pageChargee = true; if (etaitVisible) lancer(); else verifierFilm(); });
   const lancer = async () => {
-    if (pauseVisiteur || !film.paused) return;
+    if (connexionLente || !pageChargee || pauseVisiteur || !film.paused) return;
     try {
       film.muted = false;
       await film.play();
